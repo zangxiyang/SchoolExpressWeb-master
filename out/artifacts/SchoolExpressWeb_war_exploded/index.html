@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="keywords" content="校园速递,电子校快递,校园空投,校园代取快递,代拿快递,快递寄取,校园快递代寄">
+    <title>校园速递 感受不一样的速度</title>
+    <!-- 引入Layui框架 -->
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <!-- import index css -->
+    <link rel="stylesheet" href="css/index.style.css">
+    <link rel="stylesheet" href="css/basic.style.css">
+    <!-- import css animate lib for cdn  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+</head>
+<body>
+    <div class="header">
+            <div class="top">
+                <div class="index-main">
+                    <div class="layui-row">
+                        <div class="layui-col-md8"><a id="header-left" href="index.html"></a></div>
+                        <div class="layui-col-md4" id="header-right">
+                            <a href="regist.jsp"><div id="btn-regist">快速注册</div></a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+            <div class="content animated bounceIn">
+                <div class="content-top">
+                    <div class="layui-main">
+                        <div id="title-img"></div>
+                    </div>
+                </div>
+                <div class="content-botton">
+                    <div class="layui-main">
+                        <div class="layui-btn-container">
+                            <a href="login.html">
+                            <div class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal" id="btn-content">
+                                    <i class="layui-icon layui-icon-username"></i>我是用户
+                            </div>
+                            </a>
+                            <a href="login.html">
+                            <div class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal" id="btn-content">
+                                    <i class="layui-icon layui-icon-user"></i>我是配送员
+                            </div>
+                            </a>
+                            <a href="login.html">
+                            <div class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal" id="btn-content">
+                                    <i class="layui-icon  layui-icon-circle-dot"></i>管理员用户登录
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+    <div class="back">
+            <div class="layui-carousel" id="back">
+                    <div carousel-item>
+                      <div class="img1"></div>
+                      <div class="img2"></div>
+                      <div class="img3"></div>
+                    </div>
+                  </div>
+    </div>
+    <div class="footer">
+        <div class="layui-main">
+            <div class="layui-row">
+                <div class="layui-col-md6">
+                    <a href="index.html" title=""><div id="footer-logo"></div></a>
+                </div>
+                <div class="layui-col-md6" id="footer-right">
+                    <span class="footer-title">以用户为中心,开启校园速递时代!</span><br>
+                    <div style="clear:right;"></div>
+                    <span class="footer-info">©2019 EendTech. Powered By <a href="http://www.eendtech.com">极束梦想</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="layui/layui.js"></script>
+<!-- 导入百度JQ库 -->
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+        layui.use('carousel', function(){
+          var carousel = layui.carousel;
+          //建造实例
+          carousel.render({
+            elem: '#back'
+            ,width: '100%' //设置容器宽度
+            ,arrow: 'none' //始终显示箭头
+            ,height: '100%'
+            ,anim: 'fade' //切换动画方式
+            ,interval: '5000'
+            ,indicator: 'none'
+          });
+        });
+        layui.use('layer', function(){
+            var layer = layui.layer;
+  
+            $('#footer-logo').hover(function(){
+                layer.tips("校园速递,让你感受不一样的速度<br><span style=\"color:#2ca1dc;\">以用户为中心,开创校园新时代!</span>",
+                this,{
+                    tips: 1,
+                    time: 0,
+                    area: ['220px','60px']
+                });
+            },function(){
+                layer.closeAll("tips");
+            });
+            $('#header-left').hover(function(){
+                layer.tips("校园速递,让你感受不一样的速度<br><span style=\"color:#2ca1dc;\">以用户为中心,开创校园新时代!</span>",
+                this,{
+                    tips: 1,
+                    time: 0,
+                    area: ['220px','60px']
+                });
+            },function(){
+                layer.closeAll("tips");
+            });
+
+        });       
+</script>
+
+</body>
+</html>

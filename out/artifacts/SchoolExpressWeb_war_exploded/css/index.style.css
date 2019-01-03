@@ -1,0 +1,144 @@
+*{
+    padding: 0 ; 
+    margin: 0;
+}
+
+.top{
+    height: 63px;
+    width: 100%;
+    z-index: 999;
+    position: fixed;
+    top: 20px;
+    left: 0;
+}
+.top .layui-row #header-left{
+    height: 60px;
+    width: 115px;
+    background-image: url('../img/LOGO_(60px).png');
+    background-repeat: no-repeat;
+    background-position: 0 0 ;
+    background-size: 115px 60px ;
+    display: inline-block;
+}
+.back {
+    bottom: 70px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    background: #eee;
+    z-index: -1;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 20%;
+}
+.content .content-top #title-img{
+    background: url('../img/title.png') no-repeat center;
+    width: 1000px;
+    height: 350px;
+    margin: 0 auto;
+}
+.content-botton .layui-btn-container {
+    text-align: center;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+}
+#footer-right{
+    padding: 5px;
+    margin-top: 8px;
+}
+.footer #footer-logo{
+    background-image: url(../img/LOGO_small.png);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: auto 60px;
+    height: 60px;
+    width: 115px;
+    display: inline-block;
+}
+.footer-title,.footer-info{
+    font-size: 14px;
+    color: #2a2a2a;
+    float: right;
+}
+.footer-title:hover,.footer-info:hover{
+    cursor: default;
+}
+.footer-info a{
+    transition: .5s linear;
+    -webkit-transition: .5s linear;
+}
+.footer-info a:hover{
+    color: #ff5722;
+    -webkit-transition: .5s linear;
+    transition: .5s linear;
+}
+/* 自定义 */
+.index-main{
+    width: 80%;
+    margin: 0 auto ; 
+}
+#btn-regist{
+    float: right;
+    margin-top: 9px;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-style: solid;
+    border-color: #f2f2f2;
+    color: #f2f2f2;
+    border-radius: 8px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 25px;
+    font-size: 16px;
+    transition: .5s ease-in;
+    -webkit-transition: .5s ease-in;
+}
+#btn-regist:hover{
+    cursor: pointer;
+    background: rgba(242, 242, 242, 0.73);
+    color: black;
+    transition: .5s ease-out;
+    -webkit-transition: .5s ease-out;
+}
+#back .img1{
+    background: url('../img/TB1h9xxIFXXXXbKXXXXXXXXXXXX.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#back .img2{
+    background: url('../img/TB1pfG4IFXXXXc6XXXXXXXXXXXX.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#back .img3{
+    background: url('../img/TB1sXGYIFXXXXc5XpXXXXXXXXXX.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#btn-content{
+    background: rgba(0, 0, 0, 0);
+    border:1px solid #f2f2f2;
+    color: #f2f2f2;
+    height: 50px;
+    line-height: 45px;
+    -webkit-transition: .5s ease-in; 
+    transition: .5s ease-in;
+}
+#btn-content:hover{
+    color: black;
+    background: rgba(242, 242, 242, 0.73);
+    -webkit-transition: .5s ease-in; 
+    transition: .5s ease-in;
+}

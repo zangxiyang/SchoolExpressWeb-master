@@ -1,0 +1,141 @@
+body{
+    background: #fff;
+}
+#left-logo{
+    background: url("../img/LOGO_big.png") no-repeat ; 
+    background-size:230px auto ;
+    width: 230px;
+    height: 110px;
+    margin-left: 10px;
+}
+.left-back{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 480px;
+    background: #fff;
+    z-index: -1;
+}
+.img1 {
+    background: url("https://4.url.cn/zc/v3/img/01-1.jpg") no-repeat;
+    background-size: cover;
+}
+.img2 {
+    background: url("https://4.url.cn/zc/v3/img/01-3.jpg") no-repeat;
+    background-size: cover;
+}
+.img3 {
+    background: url("https://4.url.cn/zc/v3/img/01-4.jpg") no-repeat;
+    background-size: cover;
+}
+.right-title{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.right-title h1{
+    font-size: 3em;
+}
+.right-title h2{
+    margin-top: 15px;
+    color: #333;
+    font-size: 2em;
+}
+
+.right-top{
+    height: 70px;
+    position: relative;
+}
+.nav{
+    list-style: none;
+    position: relative;
+    float: right;
+    margin-right: 10%;
+    margin-top: 10px;
+}
+.nav.item{
+    cursor: default;
+    position: relative;
+    display: inline-block;
+    color: #aaa;
+    font-size: 20px;
+    margin-right: 50px;
+    transition: .4s ease;
+    -webkit-transition: .4s ease;
+}
+.nav.item:hover{
+    cursor: pointer;
+    color: #555;
+    transition: .4s ease;
+    -webkit-transition: .4s ease;
+}
+
+.content-container{
+    width: 740px;
+    margin: 0 auto;
+}
+
+
+/* 表单输入框 */
+.end-input{
+    border: 1px #aaa solid;
+    border-radius: 4px;
+    background: 0 0;
+    text-align: left;
+    font-size: 20px;
+    width: 438px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    transition: .5s linear;
+    -webkit-transition: .5s linear;
+}
+.end-input:focus{
+    border: 1px #1e9fff solid;
+    transition: .5s linear;
+    -webkit-transition: .5s linear;
+}
+.end-input:hover{
+    border: 1px #ffb800 solid;
+    transition: .5s linear;
+    -webkit-transition: .5s linear;
+}
+#submit-button{
+    border: 1px #3083ff solid;
+    border-radius: 4px;
+    background-color: #3487ff;
+    height: 60px;
+    width: 480px;
+    margin-top: 30px
+}
+/* 登录验证码 */
+#dx-yz{
+    margin-top: 20px;
+}
+/* 右侧底部 */
+.right-bottom{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    z-index: -2;
+}
+
+.footer-title,.footer-info{
+    font-size: 14px;
+    color: #2a2a2a;
+}
+.footer-title:hover,.footer-info:hover{
+    cursor: default;
+}
+.footer-info a{
+    transition: .5s linear;
+    -webkit-transition: .5s linear;
+}
+.footer-info a:hover{
+    color: #ff5722;
+    -webkit-transition: .5s linear;
+    transition: .5s linear;
+}
+

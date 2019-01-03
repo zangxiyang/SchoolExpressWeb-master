@@ -1,0 +1,108 @@
+html{
+    overflow: hidden;
+}
+.back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("http://qzonestyle.gtimg.cn/qzone/qzactStatics/imgs/20171122191532_f2975b.jpg") no-repeat;
+    background-position: center center ;
+    background-size: cover;
+    z-index: -1;
+}
+.back:after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: inherit;
+    filter: blur(6px);
+    z-index: -2;
+}
+.logo{
+    background: url("../img/LOGO.png") no-repeat ; 
+    background-position: 0 0 ;
+    background-size: 340px 130px;
+    height: 130px;
+    width: 340px;
+    position: relative;
+    margin: 10px auto;
+}
+.login-box{
+    margin-top: 10%;
+    background: rgba(255, 255, 255, 0.6);
+    height: 600px;
+    width: 560px;
+    margin: 15% auto;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
+    transition: .5s ease;
+    -webkit-transition: .5s ease;
+}
+.login-box:hover{
+    box-shadow: 1px 5px 20px 11px rgba(0, 0, 0, 0.05);
+    transition: .5s ease;
+    -webkit-transition: .5s ease;
+}
+.login-box #login-info {
+    padding: 10px 30px 10px 30px;
+}
+.login-box #login-info layui-input-block {
+    padding: 10px 0 ;
+}
+.layui-form-item{
+    margin: 0 0 30px 0 !important;
+}
+.layui-form-pane .layui-form-label {
+    width: 110px;
+    padding: 8px 15px;
+    height: 38px;
+    line-height: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 15px 0 0 15px;
+    border-right: none;
+    text-align: center;
+    background-color: #ffffff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 8px 0px rgba(100, 100, 100, 0.3);
+}
+.layui-form-pane .layui-input {
+    border-radius: 0 15px 15px 0;
+    box-shadow: 2px 3px 8px 0px rgba(100, 100, 100, 0.3);
+}
+.footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 70px;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(109, 109, 109, 0.1);
+}
+.footer-title,.footer-info{
+    font-size: 14px;
+    color: #333333;
+}
+.footer-title:hover,.footer-info:hover{
+    cursor: default;
+}
+.footer-info a{
+    color: #333333;
+    transition: .5s linear;
+    -webkit-transition: .5s linear;
+}
+.footer-info a:hover{
+    color: #ffffff;
+    -webkit-transition: .5s linear;
+    transition: .5s linear;
+}

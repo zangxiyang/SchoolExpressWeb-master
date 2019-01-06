@@ -1,0 +1,23 @@
+<style>
+  .layui-side{
+    top: 60px;
+    width: 200px;
+    overflow-x: hidden;
+  }
+</style>
+<div class="layui-side layui-bg-black">
+  <div class="layui-side-scroll">
+    <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+    <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+      <li class="layui-nav-item layui-nav-itemed">
+        <a class="" href="javascript:;">用户管理</a>
+        <dl class="layui-nav-child">
+          <dd><a href="javascript:;">添加用户</a></dd>
+          <dd><a href="javascript:;">删除用户</a></dd>
+          <dd><a href="javascript:;">禁用用户[待开发]</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="">安全退出</a></li>
+    </ul>
+  </div>
+</div>

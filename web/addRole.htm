@@ -1,0 +1,70 @@
+<style>
+    .layui-body{
+        top: 60px;
+        bottom: 44px;
+        padding: 15px;
+    }
+
+</style>
+<div class="layui-body">
+<div class="layui-card">
+    <div class="layui-card-header">添加用户</div>
+    <div class="layui-card-body">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">帐号:</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="userName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">用于指定用户的登录账号</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码:</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="passWord" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">用于指定用户的登录密码</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户组</label>
+                    <div class="layui-input-inline">
+                        <select name="role" lay-verify="required">
+                            <option value=""></option>
+                            <option value="0">用户</option>
+                            <option value="1">配送员</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                        <blockquote class="layui-elem-quote">
+                            尊敬的管理员您好:<br>
+                            为了本系统能够稳定运行，添加用户需注意以下几点。<br>
+                            1、添加用户前，请确认用户信息是否真实。<br>
+                            2、如果添加用户失败，请检查数据库是否存在同名账号或选择其他账号添加。<br>
+                            3、账号成功注册时，请前往登录界面确认是否能成功登录。<br>
+                            以上便是添加用户需要注意的几点重要提示。
+                        </blockquote>
+                </div>
+            </form>
+        </div>
+        <script>
+            //Demo
+            layui.use('form', function(){
+                var form = layui.form;
+
+                //监听提交
+                form.on('submit(formDemo)', function(data){
+                    layer.msg(JSON.stringify(data.field));
+                    return false;
+                });
+            });
+        </script>
+    </div>
+</div>

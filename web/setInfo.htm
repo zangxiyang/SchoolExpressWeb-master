@@ -1,0 +1,55 @@
+<style>
+        .layui-body{
+            top: 60px;
+            bottom: 44px;
+            padding: 15px;
+        }
+    
+    </style>
+    <div class="layui-body">
+    <div class="layui-card">
+        <div class="layui-card-header">修改资料</div>
+        <div class="layui-card-body">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">姓名:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">你的姓名</div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">联系电话:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="phone" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">你的联系电话</div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">送达地址:</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="toAddress" required lay-verify="required" placeholder="请输入送达地址" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">修改</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script>
+                //Demo
+                layui.use('form', function(){
+                    var form = layui.form;
+    
+                    //监听提交
+                    form.on('submit(formDemo)', function(data){
+                        layer.msg(JSON.stringify(data.field));
+                        return false;
+                    });
+                });
+            </script>
+        </div>
+    </div>

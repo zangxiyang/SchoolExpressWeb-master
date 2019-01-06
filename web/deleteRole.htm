@@ -1,0 +1,62 @@
+<style>
+    .layui-body{
+        top: 60px;
+        bottom: 44px;
+        padding: 15px;
+    }
+
+</style>
+<div class="layui-body">
+<div class="layui-card">
+    <div class="layui-card-header">删除用户</div>
+    <div class="layui-card-body">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">帐号:</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="userName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">需要被删除的用户</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户组</label>
+                    <div class="layui-input-inline">
+                        <select name="role" lay-verify="required">
+                            <option value=""></option>
+                            <option value="0">用户</option>
+                            <option value="1">配送员</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">删除</button>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                        <blockquote class="layui-elem-quote">
+                            尊敬的管理员您好:<br>
+                            为了本系统能够稳定运行，删除用户应注意以下几点。<br>
+                            1、为避免误删，删除前请再次确认是否删除用户。<br>
+                            2、删除后的用户，数据库将会把该用户的账号密码及交易资料完全清除。<br>
+                            3、删除后的用户资料将无法恢复。<br>
+                            4、删除用户是<span style="color: red">高危操作</span>,请谨慎处理,如果有订单正在进行的用户可能会导致<span style="color: red">系统错误</span>!<br>
+                            以上便是删除用户的几点注意事项。
+                        </blockquote>
+                </div>
+            </form>
+        </div>
+        <script>
+            //Demo
+            layui.use('form', function(){
+                var form = layui.form;
+
+                //监听提交
+                form.on('submit(formDemo)', function(data){
+                    layer.msg(JSON.stringify(data.field));
+                    return false;
+                });
+            });
+        </script>
+    </div>
+</div>

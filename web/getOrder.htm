@@ -1,0 +1,85 @@
+<style>
+    .layui-body{
+        top: 60px;
+        bottom: 44px;
+        padding: 15px;
+    }
+
+</style>
+<div class="layui-body">
+<div class="layui-card">
+    <div class="layui-card-header">订单大厅</div>
+    <div class="layui-card-body">
+            <form class="layui-form" action="">
+                <table class="layui-table" lay-size="lg">
+                    <colgroup>
+                        <col width="150">
+                        <col width="130">
+                        <col width="200">
+                        <col width="200">
+                        <col>
+                        <col>
+                        <col width="100">
+                    </colgroup>
+                    <thead>
+                      <tr>
+                          <th>订单编号</th>
+                          <th>下单人</th>
+                          <th>订单取件码</th>
+                          <th>联系电话</th>
+                          <th>订单取件地址</th>
+                          <th>订单送达地址</th>
+                          <th>操作</th>
+                      </tr> 
+                    </thead>
+                    <tbody>
+                      <tr>
+                          <td>1</td>
+                          <td>邓磊</td>
+                          <td>2016-11-29</td>
+                          <td>18512548624</td>
+                          <td>陈家桥电脑医院</td>
+                          <td>男生寝室8510</td>
+                          <td>
+                                <button class="layui-btn layui-btn-danger" lay-submit lay-filter="formDemo">接收</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>1</td>
+                          <td>邓磊</td>
+                          <td>2016-11-29</td>
+                          <td>18512548624</td>
+                          <td>陈家桥电脑医院</td>
+                          <td>男生寝室8510</td>
+                          <td>
+                              <button class="layui-btn layui-btn-danger" lay-submit lay-filter="formDemo">接收</button>
+                          </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                <div class="layui-form-item">
+                        <blockquote class="layui-elem-quote">
+                            尊敬的快递员，您好:<br>
+                            接单前请注意以下事项。<br>
+                            1、您的联系电话是否正确，以免出现顾客无法联系的情况。<br>
+                            2、您是否能在规定时间送货上门。<br>
+                            请确认无误后再接收订单，以免造成不必要的损失或麻烦。谢谢配合！<br>
+                            ps:请注意出行安全，祝您出行顺利，生活愉快！<br>
+                        </blockquote>
+                </div>
+            </form>
+        </div>
+        <script>
+            //Demo
+            layui.use('form', function(){
+                var form = layui.form;
+
+                //监听提交
+                form.on('submit(formDemo)', function(data){
+                    layer.msg(JSON.stringify(data.field));
+                    return false;
+                });
+            });
+        </script>
+    </div>
+</div>

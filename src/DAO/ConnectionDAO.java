@@ -47,10 +47,9 @@ public class ConnectionDAO {
      * 单例模式:返回对象
      * @return
      */
-    public static ConnectionDAO getInstance() throws SQLException, ClassNotFoundException {
+    public  synchronized static ConnectionDAO getInstance() throws SQLException, ClassNotFoundException {
         connectionDAO = new ConnectionDAO();
         return connectionDAO;
-
     }
 
     /**

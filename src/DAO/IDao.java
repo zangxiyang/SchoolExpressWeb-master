@@ -7,9 +7,10 @@ import java.util.List;
  * Dao层接口
  */
 public interface IDao {
-    void insert(Object obj) throws SQLException;
-    void delete(int key);
-    void update(Object obj);
-    Object select(int key);
-    List selectAll();
+    //flag -> 0: users 1:courier
+    void insert(Object obj,int flag) throws SQLException;
+    void delete(int key,int flag);
+    void update(Object obj,int flag);
+    Object select(int key,int flag);
+    List selectAll(int flag);
 }

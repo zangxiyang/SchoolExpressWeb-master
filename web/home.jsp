@@ -8,6 +8,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%
+    //roleCode -> 0:管理员 1:用户 2:配送员
+    int roleCode = 2 ;
+    session.setAttribute("roleCode",roleCode);
+
+    String pageCode = null;
+    pageCode = request.getParameter("pageCode");
+    if (pageCode != null){
+            pageContext.setAttribute("pageCode",pageCode);
+    }else {
+        if (roleCode == 0){
+            pageContext.setAttribute("pageCode","addRole");
+        } else if (roleCode == 1 ){
+            pageContext.setAttribute("pageCode","addOrder");
+        }else{
+            pageContext.setAttribute("pageCode","getOrder");
+            }
+        }
+
+%>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -16,10 +36,83 @@
 </head>
 <body style="background: #eeeeee">
 <%--引入头部和底部--%>
-<jsp:include page="home_header_user.html" />
+<c:choose>
+    <c:when test="${roleCode == 0}">
+        <jsp:include page="home_header_admin.html"/>
+    </c:when>
+    <c:when test="${roleCode == 1}">
+        <jsp:include page="home_header_user.html"/>
+    </c:when>
+    <c:when test="${roleCode == 2}">
+        <jsp:include page="home_header_Courier.html"/>
+    </c:when>
+</c:choose>
 <%--引入侧边栏--%>
-<jsp:include page="slide_user.htm"/>
+<c:choose>
+    <c:when test="${roleCode == 0}">
+        <jsp:include page="slide_admin.htm"/>
+    </c:when>
+    <c:when test="${roleCode == 1}">
+        <jsp:include page="slide_user.htm"/>
+    </c:when>
+    <c:when test="${roleCode == 2}">
+        <jsp:include page="slide_Courier.htm"/>
+    </c:when>
+</c:choose>
 <%--引入主体内容--%>
-<jsp:include page="resetPwd.htm"/>
+<c:choose>
+    <c:when test="${roleCode == 0}">
+        <jsp:include page="slide_admin.htm"/>
+    </c:when>
+    <c:when test="${roleCode == 1}">
+        <jsp:include page="slide_user.htm"/>
+    </c:when>
+    <c:when test="${roleCode == 2}">
+        <jsp:include page="slide_Courier.htm"/>
+    </c:when>
+</c:choose>
+<%--引入主体内容--%>
+<c:choose>
+    <c:when test="${pageCode.equals('addOrder')}">
+        <%--用户组的下订单--%>
+        <jsp:include page="addOrder.htm"/>
+    </c:when>
+    <c:when test="${pageCode.equals('myOrder')}">
+        <%--用户组的我的订单--%>
+        <jsp:include page="myOrder.htm"/>
+    </c:when>
+    <c:when test="${pageCode.equals('setInfo')}">
+        <%--用户组的资料修改--%>
+        <jsp:include page="setInfo.htm"/>
+    </c:when>
+    <c:when test="${pageCode.equals('resetPwd')}">
+        <%--用户组的密码修改--%>
+        <jsp:include page="resetPwd.htm"/>
+    </c:when>
+    <c:when test="${pageCode.equals('getOrder')}">
+        <%--配送员的接订单--%>
+        <jsp:include page="getOrder.htm"/>
+    </c:when>
+    <c:when test="${pageCode.equals('myOrder_Courier')}">
+        <%--配送员的我的订单--%>
+        <jsp:include page="myOrder_Courier.htm"/>
+    </c:when>
+    <c:when test="${pageCode.equals('setInfo_Courier')}">
+        <%--配送员的修改资料--%>
+        <jsp:include page="setInfo_Courier.htm"/>
+    </c:when>
+    <c:when test="${pageCode.equals('resetPwd')}">
+        <%--配送员的修改密码--%>
+        <jsp:include page="resetPwd.htm"/>
+    </c:when>
+    <c:when test="${pageCode.equals('addRole')}">
+        <%--管理员的添加用户--%>
+        <jsp:include page="addRole.htm"/>
+    </c:when>
+    <c:when test="${pageCode.equals('deleteRole')}">
+        <%--管理员的删除用户--%>
+        <jsp:include page="deleteRole.htm"/>
+    </c:when>
+</c:choose>
 </body>
 </html>

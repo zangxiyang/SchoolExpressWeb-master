@@ -54,7 +54,11 @@
                     <h1>欢迎注册校园速递</h1>
                     <h2>开启校园速递时代</h2>
                 </div>
-                <form action="RegistHandle" method="post">
+                <form action="RegistHandle" method="post" class="layui-form layui-form-pane">
+                    <div class="layui-form-item">
+                        <input type="radio" name="role" value="用户" title="用户" checked>
+                        <input type="radio" name="role" value="配送员" title="配送员">
+                    </div>
                     <!-- 用户名 -->
                     <div class="user-input-text">
                         <input id="user-input" type="text" name="userName" required lay-verify="required" title=" " placeholder="账号" autocomplete="off" class="end-input">
@@ -162,11 +166,15 @@
 <c:if test="${returnCode == 1}">
     <script>
         layui.use('layer',function () {
-           var layer = layui.layer;
-            layer.alert('注册成功', {icon: 1});
             <%
                 session.setAttribute("returnCode",null);
             %>
+           var layer = layui.layer;
+            layer.alert('注册成功', {icon: 1},function (index) {
+                layer.close(index);
+                window.location="login.html";
+            });
+
         });
     </script>
 </c:if>

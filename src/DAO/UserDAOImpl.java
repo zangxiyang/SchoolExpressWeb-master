@@ -14,14 +14,22 @@ import java.util.List;
  * 关于用户层的 DAO接口实现层
  */
 public class UserDAOImpl implements IDao {
+
+    final String TABLE_USERS = "end_users";
+    final String TABLE_COURIERS = "end_couriers";
+
     String TAG = "DAO";
     @Override
-    public void insert(Object obj) throws SQLException {
+    public void insert(Object obj,int flag) throws SQLException {
         ConnectionDAO connectionDAO = null ;
         PreparedStatement ps = null ;
-        String sql =
-                "INSERT INTO end_users(userName,passWord) VALUES (?,?)"
-                ;
+        String sql = null;
+        if (flag == 0) {
+            sql = "INSERT INTO end_users(userName,passWord) VALUES (?,?)";
+        }else if (flag == 1){
+            sql ="INSERT INTO end_couriers(userName,passWord) VALUES (?,?)";
+        }
+
         try {
             connectionDAO = ConnectionDAO.getInstance();
             System.out.println(connectionDAO.getConnection());
@@ -57,13 +65,15 @@ public class UserDAOImpl implements IDao {
     }
 
     @Override
-    public void delete(int key) {
+    public void delete(int key,int flag) {
         ConnectionDAO connectionDAO = null;
         PreparedStatement ps = null;
-        String sql =
-                "DELETE FROM end_users WHERE uid=?"
-                ;
-
+        String sql = null;
+         if (flag == 0) {
+             sql = "DELETE FROM end_users WHERE uid=?";
+         }else if (flag == 1){
+             sql = "DELETE FROM end_couriers WHERE uid=?";
+         }
         try {
             connectionDAO = ConnectionDAO.getInstance();
             ps = connectionDAO.getConnection().prepareStatement(sql);
@@ -92,12 +102,15 @@ public class UserDAOImpl implements IDao {
     }
 
     @Override
-    public void update(Object obj) {
+    public void update(Object obj,int flag) {
         ConnectionDAO connectionDAO = null;
         PreparedStatement ps = null;
-        String sql =
-                "UPDATE end_users SET userName=?,passWord=? WHERE uid=?"
-                ;
+        String sql = null ;
+        if (flag == 0) {
+            sql = "UPDATE end_users SET userName=?,passWord=? WHERE uid=?";
+        }else if (flag ==1 ){
+            sql = "UPDATE end_couriers SET userName=?,passWord=? WHERE uid=?";
+        }
         try {
             connectionDAO = ConnectionDAO.getInstance();
             ps = connectionDAO.getConnection().prepareStatement(sql);
@@ -132,14 +145,18 @@ public class UserDAOImpl implements IDao {
     }
 
     @Override
-    public Object select(int key) {
+    public Object select(int key,int flag) {
         UserBean userBean = null ;
         ConnectionDAO connectionDAO = null;
         PreparedStatement ps = null;
         ResultSet rs=null;
-        String sql =
-                "SELECT * FROM end_users WHERE uid=?"
-                ;
+        String sql = null ;
+
+        if (flag == 0 ){
+            sql = "SELECT * FROM end_users WHERE uid=?";
+        }else if (flag == 1){
+            sql = "SELECT * FROM end_couriers WHERE uid=?";
+        }
         try {
             connectionDAO = ConnectionDAO.getInstance();
             //预处理参数
@@ -179,14 +196,18 @@ public class UserDAOImpl implements IDao {
     }
 
     @Override
-    public List selectAll() {
+    public List selectAll(int flag) {
         List<UserBean> beans = new ArrayList<UserBean>();
         ConnectionDAO connectionDAO = null;
         PreparedStatement ps = null;
         ResultSet rs=null;
-        String sql =
-                "SELECT * FROM end_users"
-                ;
+        String sql = null;
+        if (flag == 0){
+            sql = "SELECT * FROM end_users";
+        }else if (flag == 1 ){
+            sql = "SELECT * FROM end_couriers";
+        }
+
         try {
             connectionDAO = ConnectionDAO.getInstance();
             ps = connectionDAO.getConnection().prepareStatement(sql);

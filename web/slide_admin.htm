@@ -12,12 +12,20 @@
       <li class="layui-nav-item layui-nav-itemed">
         <a class="" href="javascript:;">用户管理</a>
         <dl class="layui-nav-child">
-          <dd><a href="javascript:;">添加用户</a></dd>
-          <dd><a href="javascript:;">删除用户</a></dd>
-          <dd><a href="javascript:;">禁用用户[待开发]</a></dd>
+          <dd><a href="home.jsp?pageCode=addRole">添加用户</a></dd>
+          <dd><a href="home.jsp?pageCode=deleteRole">删除用户</a></dd>
+          <dd onclick="notFinish();"><a href="javascript:;">禁用用户[待开发]</a></dd>
         </dl>
       </li>
       <li class="layui-nav-item"><a href="">安全退出</a></li>
     </ul>
   </div>
 </div>
+<script>
+    function notFinish() {
+        layui.use('layer', function(){
+            var layer = layui.layer;
+            layer.msg('程序猿正在努力开发当中......');
+        });
+    }
+</script>

@@ -26,18 +26,23 @@ public class RegistHandle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-
+        String role ;
         String userName ,passWord ;
         userName = request.getParameter("userName");
         System.out.println(userName);
         passWord = request.getParameter("passWord");
+        role = request.getParameter("role");
         UserBean user = new UserBean() ;
         user.setUserName(userName);
         user.setPassWord(passWord);
-
         IDao dao = UserDaoFactory.getUserDaoInstance();
         try {
-            dao.insert(user);
+            if (role.equals("用户")) {
+                dao.insert(user, 0);
+            }
+            if (role.equals("配送员")){
+                dao.insert(user,1);
+            }
             HttpSession session = request.getSession();
             session.setAttribute("returnCode",1);
             System.out.println("Handle:"+session.getAttribute("returnCode"));
@@ -48,8 +53,6 @@ public class RegistHandle extends HttpServlet {
             System.out.println("Handle:"+session.getAttribute("returnCode"));
             response.sendRedirect("regist.jsp");
             System.out.println(e.toString());
-
-
         }
 
     }

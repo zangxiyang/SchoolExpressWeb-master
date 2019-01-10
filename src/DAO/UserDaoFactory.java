@@ -11,4 +11,6 @@ public class UserDaoFactory {
     public static IDao getUserDaoInstance(){
         return new UserDAOImpl();
     }
+    public static IDetailDao getDetailInstance(){return new UserDetailDAOImpl();}
+    public static IOrderDao getOrderInstance(){return new OrderDAOImpl();}
 }

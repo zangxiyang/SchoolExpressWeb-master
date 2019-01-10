@@ -172,7 +172,7 @@
            var layer = layui.layer;
             layer.alert('注册成功', {icon: 1},function (index) {
                 layer.close(index);
-                window.location="login.html";
+                window.location="login.jsp";
             });
 
         });

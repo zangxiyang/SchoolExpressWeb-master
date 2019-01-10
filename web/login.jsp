@@ -1,3 +1,14 @@
+<%@page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    if (session.getAttribute("loginReturn") != null){
+        if (((boolean)session.getAttribute("loginReturn")) == false){
+            //登录失败为0
+            pageContext.setAttribute("loginTip",0);
+        }
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -21,7 +32,7 @@
                 <div style="margin: 0 auto;width: 360px;"><a href="index.html" target="_blank" style="display:inline-block;"><div class="logo"></div></a></div> 
             </div>
             <div class="content">
-                    <form class="layui-form layui-form-pane" action="" id="login-info">
+                    <form class="layui-form layui-form-pane" action="LoginHandle" id="login-info" method="post">
                             <div class="layui-form-item">
                                     <input type="radio" name="role" value="用户" title="用户" checked>
                                     <input type="radio" name="role" value="配送员" title="配送员">
@@ -46,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                              <button class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal layui-btn-fluid" lay-submit="" lay-filter="demo" style="font-size:20px;">登 录</button>
+                                <button class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal layui-btn-fluid" type="submit" style="font-size:20px;">登 录</button>
                             </div>
                     </form>
                     <fieldset class="layui-elem-field layui-field-title" style="text-align: center;border-color: rgba(0,0,0,.12);">
@@ -109,5 +120,19 @@ $(document).ready(function(){
     });
 });
 </script>
+
+    <c:if test="${loginTip == 0}">
+<script>
+    layui.use('layer',function (){
+        var layer = layui.layer;
+        layer.alert('登录失败!', {icon: 5});
+    });
+    <%
+        session.setAttribute("loginReturn",null);
+        session.setAttribute("loginTip",null);
+    %>
+</script>
+    </c:if>
+
 </body>
 </html>

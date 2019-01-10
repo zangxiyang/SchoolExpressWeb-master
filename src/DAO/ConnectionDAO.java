@@ -44,11 +44,12 @@ public class ConnectionDAO {
     }
 
     /**
-     * 单例模式:返回对象
+     * 单例模式:返回对象 进程锁
      * @return
      */
     public  synchronized static ConnectionDAO getInstance() throws SQLException, ClassNotFoundException {
         connectionDAO = new ConnectionDAO();
+
         return connectionDAO;
     }
 

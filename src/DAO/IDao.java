@@ -11,6 +11,6 @@ public interface IDao {
     void insert(Object obj,int flag) throws SQLException;
     void delete(int key,int flag);
     void update(Object obj,int flag);
-    Object select(int key,int flag);
+    Object select(String key,int flag);
     List selectAll(int flag);
 }

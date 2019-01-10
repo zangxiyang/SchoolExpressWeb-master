@@ -3,6 +3,7 @@ package Handle;
 
 import Beans.UserBean;
 import DAO.IDao;
+import DAO.IDetailDao;
 import DAO.UserDaoFactory;
 
 import javax.servlet.ServletException;
@@ -39,9 +40,17 @@ public class RegistHandle extends HttpServlet {
         try {
             if (role.equals("用户")) {
                 dao.insert(user, 0);
+                //处理用户的信息数据库 :->构建用户的信息数据表初始化 绑定 uid和username
+                UserBean bean = (UserBean)dao.select(userName,0);
+                IDetailDao detailDao = UserDaoFactory.getDetailInstance();
+                detailDao.insertDetail(bean,0);
             }
             if (role.equals("配送员")){
                 dao.insert(user,1);
+                //处理配送员的信心数据库: -> 构建配送员的信息数据表 绑定uid和userName
+                UserBean bean = (UserBean)dao.select(userName,1);
+                IDetailDao detailDao = UserDaoFactory.getDetailInstance();
+                detailDao.insertDetail(bean,1);
             }
             HttpSession session = request.getSession();
             session.setAttribute("returnCode",1);

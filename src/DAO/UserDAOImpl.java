@@ -17,6 +17,7 @@ public class UserDAOImpl implements IDao {
 
     final String TABLE_USERS = "end_users";
     final String TABLE_COURIERS = "end_couriers";
+    final String TABLE_ADMINS = "end_admins";
 
     String TAG = "DAO";
     @Override
@@ -145,7 +146,7 @@ public class UserDAOImpl implements IDao {
     }
 
     @Override
-    public Object select(int key,int flag) {
+    public Object select(String key,int flag) {
         UserBean userBean = null ;
         ConnectionDAO connectionDAO = null;
         PreparedStatement ps = null;
@@ -153,23 +154,36 @@ public class UserDAOImpl implements IDao {
         String sql = null ;
 
         if (flag == 0 ){
-            sql = "SELECT * FROM end_users WHERE uid=?";
+            sql = "SELECT * FROM end_users WHERE userName=?";
         }else if (flag == 1){
-            sql = "SELECT * FROM end_couriers WHERE uid=?";
+            sql = "SELECT * FROM end_couriers WHERE userName=?";
+        }else if (flag == 2){
+            sql = "SELECT * FROM "+TABLE_ADMINS+" WHERE userName=?";
         }
         try {
             connectionDAO = ConnectionDAO.getInstance();
             //预处理参数
             ps = connectionDAO.getConnection().prepareStatement(sql);
-            ps.setInt(1,key);
+            ps.setString(1,key);
             //返回的执行结果
             rs = ps.executeQuery();
             //获取结果
-            while (rs.next()){
-                userBean = new UserBean();
-                userBean.setUid(rs.getInt("uid"));
-                userBean.setUserName(rs.getString("userName"));
-                userBean.setPassWord(rs.getString("passWord"));
+            if (flag == 0 || flag == 1) {
+                if (rs.next()) {
+                        userBean = new UserBean();
+                        userBean.setUid(rs.getInt("uid"));
+                        userBean.setUserName(rs.getString("userName"));
+                        userBean.setPassWord(rs.getString("passWord"));
+                }
+
+            }else if (flag == 2){
+                //管理员
+                if (rs.next()) {
+                        userBean = new UserBean();
+                        userBean.setUid(rs.getInt("aid"));
+                        userBean.setUserName(rs.getString("userName"));
+                        userBean.setPassWord(rs.getString("passWord"));
+                }
             }
             if (ps != null){
                 ps.close();
@@ -213,12 +227,16 @@ public class UserDAOImpl implements IDao {
             ps = connectionDAO.getConnection().prepareStatement(sql);
             //返回查询的结果
             rs = ps.executeQuery();
-            while (rs.next()){
-                UserBean userBean = new UserBean();
-                userBean.setUid(rs.getInt("uid"));
-                userBean.setPassWord(rs.getString("passWord"));
-                userBean.setUserName(rs.getString("userName"));
-                beans.add(userBean);
+            if (rs.next()) {
+                while (rs.next()) {
+                    UserBean userBean = new UserBean();
+                    userBean.setUid(rs.getInt("uid"));
+                    userBean.setPassWord(rs.getString("passWord"));
+                    userBean.setUserName(rs.getString("userName"));
+                    beans.add(userBean);
+                }
+            }else {
+                beans = null ;
             }
 
             if (ps != null){
@@ -242,7 +260,6 @@ public class UserDAOImpl implements IDao {
                 System.out.println("关闭数据库时出现未知错误:" + TAG);
             }
         }
-
         return beans;
     }
 

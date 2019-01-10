@@ -1,3 +1,5 @@
+<%@page pageEncoding="UTF-8" contentType="text/html;charset=utf-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
     .layui-body{
         top: 60px;
@@ -10,7 +12,7 @@
 <div class="layui-card">
     <div class="layui-card-header">修改资料</div>
     <div class="layui-card-body">
-            <form class="layui-form" action="">
+            <form class="layui-form" action="setInfo" method="post">
                 <div class="layui-form-item">
                     <label class="layui-form-label">姓名:</label>
                     <div class="layui-input-inline">
@@ -35,6 +37,7 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
+                        <input type="hidden" name="flag" value="1">
                         <button class="layui-btn" lay-submit lay-filter="formDemo">修改</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
@@ -42,16 +45,26 @@
             </form>
         </div>
         <script>
-            //Demo
             layui.use('form', function(){
-                var form = layui.form;
-
-                //监听提交
-                form.on('submit(formDemo)', function(data){
-                    layer.msg(JSON.stringify(data.field));
-                    return false;
-                });
             });
+            <c:if test="${sessionScope.setInfoReturn == 0}">
+            layui.use('layer',function () {
+                var layer = layui.layer;
+                layer.alert('信息修改成功',{icon:1});
+            });
+            <%
+                session.setAttribute("setInfoReturn",null);
+            %>
+            </c:if>
+            <c:if test="${sessionScope.setInfoReturn == 1}">
+            layui.use('layer',function () {
+                var layer = layui.layer;
+                layer.alert('信息修改失败',{icon:2});
+            });
+            <%
+                session.setAttribute("setInfoReturn",null);
+            %>
+            </c:if>
         </script>
     </div>
 </div>

@@ -1,17 +1,27 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 18011
-  Date: 2019/1/6
-  Time: 23:20
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
+    int roleCode = 10086;
     //roleCode -> 0:管理员 1:用户 2:配送员
-    int roleCode = 2 ;
-    session.setAttribute("roleCode",roleCode);
+    if (!(boolean)session.getAttribute("isLogin")){
+        response.sendRedirect("login.jsp");
+        return;
+    }
+
+    if (session.getAttribute("roleCode") == null){
+        response.sendRedirect("login.jsp");
+        return;
+    }else if (((int)session.getAttribute("roleCode")) == 0){
+        roleCode = 0 ;
+    }else if (((int)session.getAttribute("roleCode")) == 1){
+        roleCode = 1 ;
+    }else if (((int)session.getAttribute("roleCode")) == 2){
+        roleCode = 2 ;
+    }
+
+
 
     String pageCode = null;
     pageCode = request.getParameter("pageCode");
@@ -75,35 +85,35 @@
 <c:choose>
     <c:when test="${pageCode.equals('addOrder')}">
         <%--用户组的下订单--%>
-        <jsp:include page="addOrder.htm"/>
+        <jsp:include page="addOrder.jsp"/>
     </c:when>
     <c:when test="${pageCode.equals('myOrder')}">
         <%--用户组的我的订单--%>
-        <jsp:include page="myOrder.htm"/>
+        <jsp:include page="myOrder.jsp"/>
     </c:when>
     <c:when test="${pageCode.equals('setInfo')}">
         <%--用户组的资料修改--%>
-        <jsp:include page="setInfo.htm"/>
+        <jsp:include page="setInfo.jsp"/>
     </c:when>
     <c:when test="${pageCode.equals('resetPwd')}">
         <%--用户组的密码修改--%>
-        <jsp:include page="resetPwd.htm"/>
+        <jsp:include page="resetPwd.jsp"/>
     </c:when>
     <c:when test="${pageCode.equals('getOrder')}">
         <%--配送员的接订单--%>
-        <jsp:include page="getOrder.htm"/>
+        <jsp:include page="getOrder.jsp"/>
     </c:when>
     <c:when test="${pageCode.equals('myOrder_Courier')}">
         <%--配送员的我的订单--%>
-        <jsp:include page="myOrder_Courier.htm"/>
+        <jsp:include page="myOrder_Courier.jsp"/>
     </c:when>
     <c:when test="${pageCode.equals('setInfo_Courier')}">
         <%--配送员的修改资料--%>
-        <jsp:include page="setInfo_Courier.htm"/>
+        <jsp:include page="setInfo_Courier.jsp"/>
     </c:when>
     <c:when test="${pageCode.equals('resetPwd')}">
         <%--配送员的修改密码--%>
-        <jsp:include page="resetPwd.htm"/>
+        <jsp:include page="resetPwd.jsp"/>
     </c:when>
     <c:when test="${pageCode.equals('addRole')}">
         <%--管理员的添加用户--%>
